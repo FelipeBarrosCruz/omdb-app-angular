@@ -1,3 +1,3 @@
 # omdb-app-angular
 
-OMDB App based on react
+OMDB App based on angular v1
