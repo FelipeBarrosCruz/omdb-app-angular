@@ -5,7 +5,7 @@
     .config(Configuration)
 
   /** @ngInject */
-  function Configuration ($translateProvider) {
+  function Configuration ($translateProvider, DEFAULT_LANGUAGE) {
 
     var langMap = {
       'en_*': 'en',
