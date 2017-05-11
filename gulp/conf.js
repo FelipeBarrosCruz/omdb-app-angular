@@ -11,7 +11,7 @@ var gutil = require('gulp-util');
 /**
  *  The main module name
  */
-exports.moduleName = 'remittanceApp';
+exports.moduleName = 'OMDBApp';
 
 /**
  *  The main paths of your project handle these with care
