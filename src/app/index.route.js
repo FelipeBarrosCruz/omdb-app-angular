@@ -8,19 +8,29 @@
   function Configuration ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-      .state('home', {
+      .state('layout', {
         abstract: true,
-        templateUrl: 'app/components/home/home.html',
-        controller: 'HomeAbstractController',
-        controllerAs: 'home_vm'
+        templateUrl: 'app/components/layout/layout.html',
+        controller: 'LayoutAbstractController',
+        controllerAs: 'layout_vm'
       })
-      .state('home.search', {
+      .state('layout.home', {
         url: '/',
         views: {
           layoutContent: {
-            templateUrl: 'app/components/search/search.html',
-            controller: 'SearchController',
-            controllerAs: 'search_vm'
+            templateUrl: 'app/components/home/home.html',
+            controller: 'HomeController',
+            controllerAs: 'home_vm'
+          }
+        }
+      })
+      .state('layout.favorites', {
+        url: '/favorites',
+        views: {
+          layoutContent: {
+            templateUrl: 'app/components/favorites/favorite.html',
+            controller: 'FavoriteController',
+            controllerAs: 'favorite_vm'
           }
         }
       })

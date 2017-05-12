@@ -2,12 +2,12 @@
   'use strict';
 
   angular.module('OMDBApp')
-    .controller('HomeAbstractController', HomeAbstractController)
+    .controller('HomeController', HomeController)
 
 
   /** @ngInject */
-  function HomeAbstractController ($log) {
-    $log.info('HomeAbstractController initialized on date: %s', new Date().toISOString());
+  function HomeController ($log) {
+    $log.info('HomeController initialized on date: %s', new Date().toISOString());
   }
 
 })();
