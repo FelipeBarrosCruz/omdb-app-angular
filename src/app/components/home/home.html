@@ -1,1 +1,65 @@
-<h1 class="text-center"> SEARCH PAGE</h1>
+<section class="container search-page">
+  <h1 class="text-center"> SEARCH PAGE</h1>
+  
+  <div class="search-form">
+    <form class="form-inline">
+      <div class="form-group">
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="{{:: 'FORM_INPUT_SEARCH_PLACEHOLDER' | translate}}">
+      </div>
+      <button 
+        type="submit" 
+        class="btn btn-default"
+        data-ng-bind=":: 'FORM_INPUT_SUBMIT' | translate">
+        Search
+      </button>
+    </form>
+  </div>
+
+  <div class="search-result">
+    <div class="row well">
+      <div class="col-sm-2 hidden-xs">
+         <img 
+          class="img-responsive" 
+          src="https://images-na.ssl-images-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg">
+      </div>
+      <div class="col-sm-10">
+          <h4 class="title">
+            Matrix Movie
+          </h4>
+          <p class="description">
+            Steven Matrix is one of the underworld's foremost hitmen until his luck runs out, and someone puts a contract out on him. Shot in the forehead by a .22 pistol, Matrix "dies" and finds ...
+          </p>
+          <span class="pull-left">
+              <a class="btn btn-primary">Read More</a>
+          </span>
+          <span class="pull-right">
+              <span>
+                  <button class="btn btn-info btn-xs">
+                      <span class="fa fa-tag"></span>
+                      Action
+                  </button>
+              </span>
+              <span>
+                  <button class="btn btn-info btn-xs">
+                      <span class="fa fa-tag"></span>
+                      Drama
+                  </button>
+              </span>
+              <span>
+                  <button class="btn btn-info btn-xs">
+                      <span class="fa fa-tag"></span>
+                      Fantasy
+                  </button>
+              </span>
+          </span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+

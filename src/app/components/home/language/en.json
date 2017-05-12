@@ -1,1 +1,4 @@
-{}
+{
+  "FORM_INPUT_SEARCH_PLACEHOLDER": "Movie name",
+  "FORM_INPUT_SUBMIT": "Search"
+}
