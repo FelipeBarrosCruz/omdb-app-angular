@@ -17,15 +17,10 @@
 
 
     function doSearch () {
-      var note = {id:1, title:'just an title', action: 'create more documentation' };
-
-      ngDexie.put('notes', note).then(function(){
-        alert('Saved my note');
-      });
-      // HomeService.doSearch(vm.searchData, function(err, list) {
-      //   if (err) return;
-      //   $log.info('List', list)
-      // })
+      HomeService.doSearch(vm.searchData, function(err, list) {
+        if (err) return;
+        $log.info('List', list)
+      })
     }
 
   }
