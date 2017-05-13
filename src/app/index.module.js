@@ -8,7 +8,10 @@
       'ui.bootstrap',
       'pascalprecht.translate',
       'translations',
-      'ngAnimate'
+      'angular-loading-bar',
+      'ngAnimate',
+      'ngdexie',
+      'ngdexie.ui'
     ]);
 
 })();
