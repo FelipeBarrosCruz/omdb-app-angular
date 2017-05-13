@@ -20,8 +20,8 @@
       });
     }
 
-    function searchByName (name) {
-      var query = { s: name };
+    function searchByImdbId (imdbId) {
+      var query = { i: imdbId };
       return requestAPI(query);
     }
 
@@ -29,13 +29,13 @@
       var mapTo = { name: 's', year: 'y', type: 'type' };
       var query = {};
       for (var key in params) {
-        if (mapTo[key]) query[mapTo[key]] = params[key]
+        if (mapTo[key] && params[key]) query[mapTo[key]] = params[key]
       }
       return requestAPI(query);
     }
 
     return {
-      searchByName: searchByName,
+      searchByImdbId: searchByImdbId,
       advancedFilter: advancedFilter
     };
   }
