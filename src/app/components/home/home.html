@@ -20,7 +20,13 @@
     </form>
   </div>
 
-  <div class="search-result">
+  <div 
+    class="search-result" 
+    infinite-scroll="home_vm.onScrollPage()"
+    infinite-scroll-immediate-check="false"
+    infinite-scroll-distance="3"
+    infinite-scroll-disabled="home_vm.onScrolling"
+    infinite-scroll-use-document-bottom="true">
     <div class="row well" data-ng-repeat="result in home_vm.searchList" data-ng-if="home_vm.searchList.length">
       <div class="col-sm-2">
          <img

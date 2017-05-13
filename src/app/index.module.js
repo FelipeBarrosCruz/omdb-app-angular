@@ -11,7 +11,8 @@
       'angular-loading-bar',
       'ngAnimate',
       'ngdexie',
-      'ngdexie.ui'
+      'ngdexie.ui',
+      'infinite-scroll'
     ]);
 
 })();
