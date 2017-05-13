@@ -21,39 +21,29 @@
   </div>
 
   <div class="search-result">
-    <div class="row well">
+    <div class="row well" data-ng-repeat="result in home_vm.searchList" data-ng-if="home_vm.searchList.length">
       <div class="col-sm-2">
-         <img 
-          class="img-responsive" 
-          src="https://images-na.ssl-images-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg">
+         <img
+          class="img-responsive"
+          data-ng-if="result.Poster"
+          data-ng-src="{{result.Poster}}"
+          alt="result.Title">
       </div>
       <div class="col-sm-10">
-          <h4 class="title">
-            Matrix Movie
+          <h4 class="title" data-ng-if="result.Title">
+            {{result.Title}}
           </h4>
-          <p class="description">
-            Steven Matrix is one of the underworld's foremost hitmen until his luck runs out, and someone puts a contract out on him. Shot in the forehead by a .22 pistol, Matrix "dies" and finds ...
+          <p class="description" data-ng-if="result.Description">
+            {{result.Description}}
           </p>
           <span class="pull-left">
-              <a class="btn btn-primary">Read More</a>
+              <a class="btn btn-primary" data-ng-bind=":: 'LABEL_READ_MORE' | translate">Read More</a>
           </span>
-          <span class="pull-right">
-              <span>
+          <span class="pull-right" data-ng-if="result.Genres">
+              <span data-ng-repeat="genre in result.Genres">
                   <button class="btn btn-info btn-xs">
                       <span class="fa fa-tag"></span>
-                      Action
-                  </button>
-              </span>
-              <span>
-                  <button class="btn btn-info btn-xs">
-                      <span class="fa fa-tag"></span>
-                      Drama
-                  </button>
-              </span>
-              <span>
-                  <button class="btn btn-info btn-xs">
-                      <span class="fa fa-tag"></span>
-                      Fantasy
+                      {{genre}}
                   </button>
               </span>
           </span>

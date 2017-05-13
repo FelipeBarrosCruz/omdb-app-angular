@@ -1,4 +1,5 @@
 {
   "FORM_INPUT_SEARCH_PLACEHOLDER": "Movie name",
-  "FORM_INPUT_SUBMIT": "Search"
+  "FORM_INPUT_SUBMIT": "Search",
+  "LABEL_READ_MORE": "Read More"
 }
