@@ -7,12 +7,16 @@
 
 
   /** @ngInject */
-  function HomeService ($log, WebAPI) {
+  function HomeService ($log, WebAPI, FALLBACK_POSTER_IMG) {
     $log.info('HomeService initialized on date: %s', new Date().toISOString());
 
     function parseListResult (data, done) {
       if (!data.Response || !angular.isArray(data.Search)) return done([]);
-      return done(data.Search);
+      var result = data.Search.map(function(value) {
+        if (value.Poster === 'N/A') value.Poster = FALLBACK_POSTER_IMG;
+        return value;
+      })
+      return done(result);
     }
 
     function searchByImdbId (imdbId, done) {

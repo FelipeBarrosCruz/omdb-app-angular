@@ -6,7 +6,7 @@
 
 
   /** @ngInject */
-  function HomeController ($log, HomeService, ngDexie) {
+  function HomeController ($log, HomeService) {
     $log.info('HomeController initialized on date: %s', new Date().toISOString());
     var vm = this;
     vm.searchList = [];
