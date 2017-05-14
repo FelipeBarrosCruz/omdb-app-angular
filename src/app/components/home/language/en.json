@@ -2,6 +2,5 @@
   "FORM_INPUT_SEARCH_NAME_PLACEHOLDER": "Movie name",
   "FORM_INPUT_SEARCH_YEAR_PLACEHOLDER": "Movie year",
   "FORM_INPUT_SUBMIT": "Search",
-  "LABEL_READ_MORE": "Read More",
-  "LABEL_ADD_FAVORITES": "+ Favorite"
+  "LABEL_READ_MORE": "Read More"
 }
