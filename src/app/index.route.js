@@ -24,6 +24,16 @@
           }
         }
       })
+      .state('layout.detail', {
+        url: '/:imdbID/:slug',
+        views: {
+          layoutContent: {
+            templateUrl: 'app/components/details/detail.html',
+            controller: 'DetailController',
+            controllerAs: 'detail_vm'
+          }
+        }
+      })
       .state('layout.favorites', {
         url: '/favorites',
         views: {
