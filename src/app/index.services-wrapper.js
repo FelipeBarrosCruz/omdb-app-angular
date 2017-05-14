@@ -2,12 +2,11 @@
   'use strict';
 
   angular.module('OMDBApp')
-    .service('lodash', lodashService);
-
+    .service('_', lodashService);
 
   /** @ngInject */
   function lodashService ($window) {
-    $window['_'];
+    return $window['_'];
   }
 
 })();
