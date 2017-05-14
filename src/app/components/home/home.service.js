@@ -12,7 +12,7 @@
 
     function parseListResult (data, done) {
       if (!data.Response || !angular.isArray(data.Search)) return done([]);
-      var result = data.Search.map(function(value) {
+      var result = data.Search.map(function (value) {
         if (value.Poster === 'N/A') value.Poster = FALLBACK_POSTER_IMG;
         return value;
       })
@@ -21,30 +21,26 @@
 
     function searchByImdbId (imdbId, done) {
       return WebAPI.searchByImdbId(imdbId)
-        .then(function(response) {
+        .then(function (response) {
           $log.info('Response by imdbId [%s]', imdbId, response);
           return done(null, response.data);
-        }).catch(function(err) {
+        }).catch(function (err) {
           $log.error(err, 'Error when get result by imdbId');
           return done(err, null)
         })
     }
     function doSearch (params, done) {
       return WebAPI.advancedFilter(params)
-        .then(function(response) {
+        .then(function (response) {
           $log.info('Response list of search', response);
-          return parseListResult(response.data, function onParsed(list) {
+          return parseListResult(response.data, function onParsed (list) {
             return done(null, list);
           });
-        }).catch(function(err) {
+        }).catch(function (err) {
           $log.error(err, 'Error when get list of search');
           return done(err, null);
-        })
+        });
     }
-
-
-
-
 
     return {
       doSearch: doSearch,

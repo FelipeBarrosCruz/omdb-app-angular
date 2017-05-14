@@ -6,7 +6,7 @@
 
 
   /** @ngInject */
-  function HomeController ($log, HomeService, $location) {
+  function HomeController ($log, HomeService, FavoriteService, $location, $state) {
     $log.info('HomeController initialized on date: %s', new Date().toISOString());
     var vm = this;
     vm.searchList = [];
@@ -18,15 +18,22 @@
     vm.onScrolling = false;
     vm.doSearch = doSearch;
     vm.onScrollPage = onScrollPage;
+    vm.getMoreInformation = getMoreInformation;
+    vm.addInFavorites = FavoriteService.add;
 
-    (function construct() {
+    (function construct () {
       if (vm.searchData.name) {
         doSearch();
       }
     })();
 
-    function setQueryParams() {
+    function setQueryParams () {
       $location.search(vm.searchData);
+    }
+
+    function getMoreInformation (result) {
+      vm.onScrolling = true;
+      return $state.go('layout.detail', {imdbID: result.imdbID, slug: result.Title});
     }
 
     function onScrollPage () {
@@ -37,9 +44,8 @@
 
     function doSearch () {
       setQueryParams();
-      HomeService.doSearch(vm.searchData, function(err, list) {
+      HomeService.doSearch(vm.searchData, function (err, list) {
         if (err) return;
-        $log.info('List', list)
         vm.searchList = vm.searchList.concat(list);
         vm.onScrolling = !list.length;
         if (!list.length) {
