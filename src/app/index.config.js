@@ -5,7 +5,8 @@
     .config(Configuration)
 
   /** @ngInject */
-  function Configuration ($translateProvider, DEFAULT_LANGUAGE) {
+  function Configuration (cfpLoadingBarProvider, $translateProvider, DEFAULT_LANGUAGE) {
+    cfpLoadingBarProvider.includeSpinner = false;
 
     var langMap = {
       'en_*': 'en',

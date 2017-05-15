@@ -23,10 +23,22 @@
         {{detail_vm.result[field]}}
       </div>
       
-      <div class="detail-actions text-center">
-        <button class="btn btn-primary" data-ng-bind=":: 'LABEL_ADD_FAVORITES' | translate">
+      <div class="detail-actions text-center" data-ng-if="detail_vm.actions.add">
+        <button 
+          class="btn btn-primary" 
+          data-ng-bind=":: 'LABEL_ADD_FAVORITES' | translate"
+          data-ng-click="detail_vm.createInFavoriteList(detail_vm.result)">
           + Favorites
         </button>
+      </div>
+
+      <div class="detail-actions text-center" data-ng-if="!detail_vm.actions.add">
+        <div class="alert alert-info">
+          {{:: 'DETAIL_ALERT_ALREADY_ADDED_IN_FAVORITES_BODY' | translate}} 
+          <a href class="text-danger" data-ng-click="detail_vm.removeInFavoriteList(detail_vm.result)">
+            {{:: 'DETAIL_ALERT_ALREADY_ADDED_IN_FAVORITES_BUTTON' | translate}}
+          </a>
+        </div>
       </div>
 
     </div>

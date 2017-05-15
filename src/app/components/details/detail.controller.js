@@ -6,9 +6,11 @@
 
 
   /** @ngInject */
-  function DetailController ($log, $location, $stateParams, DetailService) {
+  function DetailController ($log, $location, $stateParams, DetailService, FavoriteService) {
     $log.info('DetailController initialized on date: %s', new Date().toISOString());
     var vm = this;
+    vm.createInFavoriteList = createInFavoriteList;
+    vm.removeInFavoriteList = removeInFavoriteList;
     vm.imdbId = $stateParams.imdbID;
     vm.result = null;
     vm.fieldsToShow = [
@@ -29,16 +31,40 @@
       'imdbRating': 'DETAIL_LABEL_RATING',
       'Awards': 'DETAIL_LABEL_AWARDS'
     };
+    vm.actions = {
+      add: false
+    };
     
     (function construct () {
       $location.search({});
       getFullInfo();
+      verifyAlreadyInFavoriteList();
     })();
 
     function getFullInfo () {
       return DetailService.getFullInfo(vm.imdbId, function (err, result) {
         if (err) return;
         vm.result = result;
+      })
+    }
+
+    function verifyAlreadyInFavoriteList () {
+      FavoriteService.getByImdbId(vm.imdbId, function (err, response) {
+        if (err || !response) return vm.actions.add = true;
+      })
+    }
+
+    function createInFavoriteList (result) {
+      return FavoriteService.create(result, function (err, response) {
+        if (err) return;
+        return vm.actions.add = (response) ? false : true;
+      })
+    }
+
+    function removeInFavoriteList (result) {
+      return FavoriteService.remove(result, function (err, response) {
+        if (err) return;
+        return vm.actions.add = (response) ? true : false;
       })
     }
 

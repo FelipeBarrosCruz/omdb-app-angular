@@ -5,5 +5,7 @@
   "DETAIL_LABEL_GENRE": "Genre",
   "DETAIL_LABEL_DIRECTOR": "Director",
   "DETAIL_LABEL_RATING": "Rating",
-  "DETAIL_LABEL_AWARDS": "Awards"
+  "DETAIL_LABEL_AWARDS": "Awards",
+  "DETAIL_ALERT_ALREADY_ADDED_IN_FAVORITES_BODY": "Already added to favorites, you want to",
+  "DETAIL_ALERT_ALREADY_ADDED_IN_FAVORITES_BUTTON": "remove?"
 }
