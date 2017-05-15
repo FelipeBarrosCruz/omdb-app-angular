@@ -33,27 +33,6 @@
     infinite-scroll-distance="3"
     infinite-scroll-disabled="home_vm.onScrolling"
     infinite-scroll-use-document-bottom="true">
-    <div class="row" data-ng-repeat="result in home_vm.searchList" data-ng-if="home_vm.searchList.length">
-        <div class="col-md-6 col-md-offset-3 well">
-          <h4 class="result-title" data-ng-if="result.Title">
-            {{result.Title}}
-          </h4>
-          <div class="result-poster">
-             <img
-              data-ng-if="result.Poster"
-              data-ng-src="{{result.Poster}}"
-              data-err-src="assets/images/default_poster.jpg"
-              alt="{{result.Title}}">
-          </div>
-          <div class="result-actions">
-            <button 
-              class="btn btn-primary" 
-              data-ng-bind=":: 'LABEL_READ_MORE' | translate"
-              data-ng-click="home_vm.getMoreInformation(result)">
-              See More
-            </button>
-          </div>
-        </div>
-    </div>
+    <list-view data-list="home_vm.searchList"></list-view>
   </div>
 </section>
