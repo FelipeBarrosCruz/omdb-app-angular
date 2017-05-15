@@ -1,1 +1,9 @@
-{}
+{
+  "DETAIL_LABEL_PLOT": "Enredo",
+  "DETAIL_LABEL_ACTORS": "Atores",
+  "DETAIL_LABEL_YEAR": "Ano",
+  "DETAIL_LABEL_GENRE": "Gênero",
+  "DETAIL_LABEL_DIRECTOR": "Diretor",
+  "DETAIL_LABEL_RATING": "Avaliação",
+  "DETAIL_LABEL_AWARDS": "Prêmios"
+}

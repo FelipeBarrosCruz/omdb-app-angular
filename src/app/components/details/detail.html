@@ -1,2 +1,35 @@
-<h1 class="text-center"> DETAIL PAGE</h1>
+<div class="container">
+  <div class="detail-container well" data-ng-if="detail_vm.result">
+    
+    <div class="detail-header">
+      <h1 class="text-center">
+        {{detail_vm.result.Title}} - {{detail_vm.result.Year}}
+      </h1>
+    </div>
 
+    <div class="detail-body">
+      
+      <div class="detail-poster text-center">
+         <img
+          data-ng-if="detail_vm.result.Poster"
+          data-ng-src="{{detail_vm.result.Poster}}"
+          data-err-src="assets/images/default_poster.jpg"
+          alt="{{detail_vm.result.Title}}">
+      </div>
+      <hr>
+      
+      <div class="detail-item" data-ng-repeat="field in detail_vm.fieldsToShow" data-ng-if="detail_vm.result[field]">
+        <strong>{{:: detail_vm.mapFieldsToTranslateKey[field] | translate}}: </strong>
+        {{detail_vm.result[field]}}
+      </div>
+      
+      <div class="detail-actions text-center">
+        <button class="btn btn-primary" data-ng-bind=":: 'LABEL_ADD_FAVORITES' | translate">
+          + Favorites
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
