@@ -7,14 +7,22 @@
       controller: controller,
       controllerAs: 'list_view_vm',
       bindings: {
-        list: '<list'
+        list: '<list',
+        onScrolling: '='
       }
   })
 
   /** @ngInject */
-  function controller ($log) {
+  function controller ($log, $state) {
     $log.info('ListView initialized on date: %s', new Date().toISOString());
     var vm = this;
+    vm.getMoreInformation = getMoreInformation;
+
+    function getMoreInformation (result) {
+      vm.onScrolling(true);
+      return $state.go('layout.detail', {imdbID: result.imdbID, slug: result.Title});
+    }
+
   }
 
 })();

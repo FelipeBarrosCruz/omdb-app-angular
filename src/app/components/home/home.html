@@ -31,8 +31,10 @@
     infinite-scroll="home_vm.onScrollPage()"
     infinite-scroll-immediate-check="false"
     infinite-scroll-distance="3"
-    infinite-scroll-disabled="home_vm.onScrolling"
+    infinite-scroll-disabled="home_vm.scrolling"
     infinite-scroll-use-document-bottom="true">
-    <list-view data-list="home_vm.searchList"></list-view>
+    <list-view 
+      data-list="home_vm.searchList"
+      data-on-scrolling="home_vm.onScrolling"></list-view>
   </div>
 </section>

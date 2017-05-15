@@ -6,7 +6,7 @@
 
 
   /** @ngInject */
-  function HomeController ($log, HomeService, $location, $state) {
+  function HomeController ($log, HomeService, $location) {
     $log.info('HomeController initialized on date: %s', new Date().toISOString());
     var vm = this;
     vm.searchList = [];
@@ -15,10 +15,10 @@
       year: $location.search().year || null,
       page: 1
     };
-    vm.onScrolling = false;
+    vm.scrolling = false;
     vm.doSearch = doSearch;
     vm.onScrollPage = onScrollPage;
-    vm.getMoreInformation = getMoreInformation;
+    vm.onScrolling = onScrolling;
 
     (function construct () {
       if (vm.searchData.name) {
@@ -30,14 +30,13 @@
       $location.search(vm.searchData);
     }
 
-    function getMoreInformation (result) {
-      vm.onScrolling = true;
-      return $state.go('layout.detail', {imdbID: result.imdbID, slug: result.Title});
+    function onScrolling (value) {
+      vm.scrolling = value;
     }
 
     function onScrollPage () {
       vm.searchData.page++;
-      vm.onScrolling = true;
+      vm.scrolling = true;
       return doSearch();
     }
 
@@ -46,7 +45,7 @@
       HomeService.doSearch(vm.searchData, function (err, list) {
         if (err) return;
         vm.searchList = vm.searchList.concat(list);
-        vm.onScrolling = !list.length;
+        vm.scrolling = !list.length;
         if (!list.length) {
           vm.searchData.page--;
           setQueryParams();
