@@ -24,6 +24,27 @@
           </a>
         </li>
       </ul>
+      <div class="navbar-form navbar-right">
+        <div class="btn-group" uib-dropdown>
+          <button 
+            id="dropdown-language" 
+            type="button" 
+            class="btn btn-default" 
+            uib-dropdown-toggle>
+            {{'NAVBAR_LANGUAGE_TITLE' | translate}} <span class="fa fa-caret-down"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="dropdown-language">
+            <li role="menuitem" data-ng-repeat="language in navbar_top_vm.avaliableLanguages">
+              <a
+                href
+                data-ng-bind=":: navbar_top_vm.mapLanguageTranslationByKey[language] | translate"
+                data-ng-click="navbar_top_vm.switchLanguage(language)">
+                {{language}}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </nav>

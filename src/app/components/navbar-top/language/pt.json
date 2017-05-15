@@ -1,4 +1,7 @@
 {
   "NAVBAR_TITLE_HOME": "Inicio",
-  "NAVBAR_TITLE_FAVORITES": "Favoritos"
+  "NAVBAR_TITLE_FAVORITES": "Favoritos",
+  "NAVBAR_LANGUAGE_TITLE": "Linguagem",
+  "NAVBAR_LANGUAGE_EN": "Inglês",
+  "NAVBAR_LANGUAGE_PT": "Português"
 }

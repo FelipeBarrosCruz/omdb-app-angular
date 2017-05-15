@@ -19,8 +19,17 @@
   }
 
   /** @ngInject */
-  function controller ($log) {
+  function controller ($log, $translate, $state, AVALIABLE_LANGUAGES, LANGUAGES_TRANSLATION_KEYS) {
     $log.info('NavBarController initialized on date: %s', new Date().toISOString());
+    var vm = this;
+    vm.avaliableLanguages = AVALIABLE_LANGUAGES;
+    vm.mapLanguageTranslationByKey = LANGUAGES_TRANSLATION_KEYS;
+    vm.switchLanguage = switchLanguage;
+
+    function switchLanguage (language) {
+      $translate.use(language);
+      return $state.reload();
+    }
   }
 
 })();
