@@ -6,7 +6,7 @@
 
 
   /** @ngInject */
-  function HomeController ($log, HomeService, FavoriteService, $location, $state) {
+  function HomeController ($log, HomeService, $location, $state) {
     $log.info('HomeController initialized on date: %s', new Date().toISOString());
     var vm = this;
     vm.searchList = [];
@@ -19,7 +19,6 @@
     vm.doSearch = doSearch;
     vm.onScrollPage = onScrollPage;
     vm.getMoreInformation = getMoreInformation;
-    vm.addInFavorites = FavoriteService.add;
 
     (function construct () {
       if (vm.searchData.name) {
@@ -54,7 +53,6 @@
         }
       })
     }
-
   }
 
 })();
