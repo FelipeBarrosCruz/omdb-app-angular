@@ -21,15 +21,6 @@
           return $log.info('Database connection established');
         })
     })
-
-    //  ngDexieProvider.setConfiguration(function(db) {
-    //    db.version(1).stores({
-    //      notes: "++id,title"
-    //    });
-    //    db.on('error', function(err) {
-    //      $log.error('Database connection error: ', err);
-    //    });
-    // })
   }
 })();
 
