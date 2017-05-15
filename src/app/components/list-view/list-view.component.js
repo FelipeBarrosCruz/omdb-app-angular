@@ -19,10 +19,9 @@
     vm.getMoreInformation = getMoreInformation;
 
     function getMoreInformation (result) {
-      vm.onScrolling(true);
+      if (angular.isFunction(vm.onScrolling)) vm.onScrolling(true);
       return $state.go('layout.detail', {imdbID: result.imdbID, slug: result.Title});
     }
-
   }
 
 })();

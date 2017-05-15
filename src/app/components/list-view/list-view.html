@@ -1,22 +1,24 @@
-<div class="row" data-ng-repeat="result in list_view_vm.list" data-ng-if="list_view_vm.list.length">
-    <div class="col-md-6 col-md-offset-3 well">
-      <h4 class="result-title" data-ng-if="result.Title">
-        {{result.Title}}
-      </h4>
-      <div class="result-poster">
-         <img
-          data-ng-if="result.Poster"
-          data-ng-src="{{result.Poster}}"
-          data-err-src="assets/images/default_poster.jpg"
-          alt="{{result.Title}}">
+<div class="result-list text-center">
+  <div class="row" data-ng-repeat="result in list_view_vm.list" data-ng-if="list_view_vm.list.length">
+      <div class="col-md-6 col-md-offset-3 well">
+        <h4 class="result-title" data-ng-if="result.Title">
+          {{result.Title}}
+        </h4>
+        <div class="result-poster">
+           <img
+            data-ng-if="result.Poster"
+            data-ng-src="{{result.Poster}}"
+            data-err-src="assets/images/default_poster.jpg"
+            alt="{{result.Title}}">
+        </div>
+        <div class="result-actions">
+          <button 
+            class="btn btn-primary" 
+            data-ng-bind=":: 'LABEL_READ_MORE' | translate"
+            data-ng-click="list_view_vm.getMoreInformation(result)">
+            See More
+          </button>
+        </div>
       </div>
-      <div class="result-actions">
-        <button 
-          class="btn btn-primary" 
-          data-ng-bind=":: 'LABEL_READ_MORE' | translate"
-          data-ng-click="list_view_vm.getMoreInformation(result)">
-          See More
-        </button>
-      </div>
-    </div>
+  </div>
 </div>

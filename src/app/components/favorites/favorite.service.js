@@ -12,7 +12,7 @@
     var DB_TABLE_NAME = 'favorites';
 
     function validateAndFilter (result) {
-      var data = _.pick(result, ['imdbID', 'Year', 'imdbRating', 'Genre']);
+      var data = _.pick(result, ['imdbID', 'Title', 'Poster', 'Year', 'imdbRating', 'Genre']);
       data.Genre = data.Genre.split(',')
       return data;
     }
@@ -40,6 +40,17 @@
         });
     }
 
+    function select (done) {
+      return ngDexie.list(DB_TABLE_NAME)
+        .then(function (result) {
+          $log.info('Result list of favorites: ', result)
+          return done(null, result);
+        }).catch(function (err) {
+          $log.error('Error when return list of favorites: ', err);
+          return done(err || new Error('Cannot get the list of favorites'), null)
+        })
+    }
+
     function getByIndex (index, value) {
       return ngDexie.getByIndex(DB_TABLE_NAME, index, value);
     }
@@ -58,6 +69,7 @@
     return {
       create: create,
       remove: remove,
+      select: select,
       getByImdbId: getByImdbId
     }
   }
