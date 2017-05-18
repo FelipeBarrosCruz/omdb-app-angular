@@ -36,7 +36,7 @@
     }
 
     function advancedFilter (params) {
-      var mapTo = { name: 's', year: 'y', type: 'type', page: 'page'};
+      var mapTo = { Title: 's', Year: 'y', type: 'type', page: 'page'};
       var query = {};
       for (var key in params) {
         if (mapTo[key] && params[key]) query[mapTo[key]] = params[key];
