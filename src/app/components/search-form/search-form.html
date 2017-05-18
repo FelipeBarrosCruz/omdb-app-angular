@@ -1,0 +1,35 @@
+<div class="search-form">
+  <form class="form-inline" name="searchForm">
+    <div class="form-group">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="{{:: 'FORM_INPUT_SEARCH_NAME_PLACEHOLDER' | translate}}"
+        data-ng-model="search_form_vm.searchData.name"
+        required>
+    </div>
+    <div class="form-group">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="{{:: 'FORM_INPUT_SEARCH_YEAR_PLACEHOLDER' | translate}}"
+        data-ng-model="search_form_vm.searchData.year">
+    </div>
+    <div class="form-group">
+      <input 
+        type="text"
+        class="form-control",
+        placeholder="{{:: 'FORM_INPUT_SEARCH_GENRE_PLACEHOLDER' | translate}}"
+        data-ng-model="search_form_vm.searchData.genre"
+        >
+      </div>
+    <button 
+      type="submit" 
+      class="btn btn-default"
+      data-ng-bind=":: 'FORM_INPUT_SUBMIT' | translate"
+      data-ng-click="search_form_vm.doSearch()"
+      data-ng-disabled="searchForm.$invalid">
+      Search
+    </button>
+  </form>
+</div>
