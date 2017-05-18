@@ -1,5 +1,7 @@
 <div class="result-list text-center">
-  <div class="row" data-ng-repeat="result in list_view_vm.list" data-ng-if="list_view_vm.list.length">
+  <div class="row" 
+    data-ng-repeat="result in list_view_vm.list | filter:list_view_vm.searchData:strict"
+    data-ng-if="list_view_vm.list.length">
       <div class="col-md-6 col-md-offset-3 well">
         <h4 class="result-title" data-ng-if="result.Title">
           {{result.Title}}

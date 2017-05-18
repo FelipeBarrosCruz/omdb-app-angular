@@ -7,8 +7,9 @@
       controller: controller,
       controllerAs: 'list_view_vm',
       bindings: {
-        list: '<list',
-        onScrolling: '='
+        list: '=',
+        onScrolling: '=',
+        searchData: '='
       }
   })
 
