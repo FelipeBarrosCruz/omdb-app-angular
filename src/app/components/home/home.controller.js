@@ -13,6 +13,7 @@
     vm.searchData = {
       name: $location.search().name || null,
       year: $location.search().year || null,
+      genre: $location.search().genre || null,
       page: 1
     };
     vm.scrolling = false;

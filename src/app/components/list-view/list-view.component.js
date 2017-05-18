@@ -14,7 +14,7 @@
 
   /** @ngInject */
   function controller ($log, $state) {
-    $log.info('ListView initialized on date: %s', new Date().toISOString());
+    $log.info('ListView Component initialized on date: %s', new Date().toISOString());
     var vm = this;
     vm.getMoreInformation = getMoreInformation;
 
