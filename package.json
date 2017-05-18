@@ -6,9 +6,9 @@
   "homepage": "https://github.com/FelipeBarrosCruz/omdb-app-angular#readme",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "sudo npm run install && ./run",
+    "start": "npm run install && ./run",
     "development": "gulp serve --NODE_ENV=development",
-    "install": "sudo npm i && sudo bower install -allow-root",
+    "install": "npm i && bower install -allow-root",
     "test": "echo \"no tests\""
   },
   "repository": {
