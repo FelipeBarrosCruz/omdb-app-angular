@@ -11,10 +11,9 @@
     var vm = this;
     vm.list = [];
     vm.searchData = {
-      name: $location.search().name || null,
-      year: $location.search().year || null,
-      genre: $location.search().genre || null,
-      page: 1
+      Title: $location.search().title || '',
+      Year: $location.search().year || '',
+      Genre: $location.search().genre || ''
     };
 
     (function construct () {
