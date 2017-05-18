@@ -2,20 +2,34 @@
   'use strict';
 
   angular.module('OMDBApp')
-    .directive('navbarTop', function() {
-      return {
+    .directive('navbarTop', navbarTopDirective);
+
+  /** @ngInject */
+  function navbarTopDirective ($window) {
+    return {
       templateUrl: 'app/components/navbar-top/navbar-top.html',
-      link: link,
+      link: link($window),
       controller: controller,
       controllerAs: 'navbar_top_vm'
-    }
-  })
+    };
+  }
 
-  function link ($scope, $element) {
-    angular.element($element).find('.navbar-nav li').click(function(){
-      angular.element(this).addClass('active');
-      angular.element(this).parent().children('li').not(this).removeClass('active');
-    });
+  /** @ngInject */
+  function link ($window) {
+    return function ($scope, $element) {
+      var pageUrl = $window.location.href.substr($window.location.href.lastIndexOf('/')+1)
+      var $ = angular.element($element)
+      $.find('.navbar-nav li').click(function(){
+        angular.element(this).addClass('active');
+        angular.element(this).parent().children('li').not(this).removeClass('active');
+      });
+      $.find('.navbar-nav li a').each(function () {
+        var menuItem = angular.element(this);
+        if (menuItem.attr('href').indexOf(pageUrl) !== -1) {
+          return menuItem.click();
+        }
+      })
+    }
   }
 
   /** @ngInject */
