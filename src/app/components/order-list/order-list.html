@@ -1,0 +1,9 @@
+<select 
+  data-ng-model="order_list_vm.orderBy" 
+  class="form-control" 
+  data-ng-change="order_list_vm.doOrderBy()">
+  <option value="">{{:: 'ORDER_BY_LABEL' | translate}}</option>
+  <option value="Year">{{:: 'ORDER_BY_YEAR' | translate}}</option>
+  <option value="imdbRating">{{:: 'ORDER_BY_RATING' | translate}}</option>
+  <option value="Genre">{{:: 'ORDER_BY_GENRE' | translate}}</option>
+</select>
