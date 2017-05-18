@@ -7,21 +7,25 @@
       controller: controller,
       controllerAs: 'search_form_vm',
       bindings: {
+        list: '=',
         searchData: '=',
         doSearch: '='
       }
   })
 
   /** @ngInject */
-  function controller ($log, _) {
+  function controller ($log, _, $location) {
     $log.info('SearchForm Component initialized on date: %s', new Date().toISOString());
     var vm = this;
-    var searchData = { name: null, year: null, genre: null };
-    
-    (function construct() {
-      if (!angular.isObject(vm.searchData)) vm.searchData = {};
-      vm.searchData = _.extend(vm.searchData, searchData);
-    })();
+    vm.onChangeSearchData = onChangeSearchData;
+
+    function onChangeSearchData () {
+      var query = {}
+      for (var property in vm.searchData) {
+        if (vm.searchData[property]) query[property.toLowerCase()] = vm.searchData[property];
+      }
+      $location.search(query)
+    }
   }
 
 })();

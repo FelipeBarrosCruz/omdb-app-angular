@@ -5,7 +5,8 @@
         type="text" 
         class="form-control" 
         placeholder="{{:: 'FORM_INPUT_SEARCH_NAME_PLACEHOLDER' | translate}}"
-        data-ng-model="search_form_vm.searchData.name"
+        data-ng-model="search_form_vm.searchData.Title"
+        data-ng-change="search_form_vm.onChangeSearchData()"
         required>
     </div>
     <div class="form-group">
@@ -13,16 +14,20 @@
         type="text" 
         class="form-control" 
         placeholder="{{:: 'FORM_INPUT_SEARCH_YEAR_PLACEHOLDER' | translate}}"
-        data-ng-model="search_form_vm.searchData.year">
+        data-ng-model="search_form_vm.searchData.Year"
+        data-ng-change="search_form_vm.onChangeSearchData()">
     </div>
     <div class="form-group">
       <input 
         type="text"
         class="form-control",
         placeholder="{{:: 'FORM_INPUT_SEARCH_GENRE_PLACEHOLDER' | translate}}"
-        data-ng-model="search_form_vm.searchData.genre"
-        >
-      </div>
+        data-ng-model="search_form_vm.searchData.Genre"
+        data-ng-change="search_form_vm.onChangeSearchData()">
+    </div>
+    <div class="form-group">
+      <order-list data-list="search_form_vm.list"></order-list>
+    </div>
     <button 
       type="submit" 
       class="btn btn-default"
