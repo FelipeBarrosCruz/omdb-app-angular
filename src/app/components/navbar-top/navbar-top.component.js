@@ -25,8 +25,9 @@
       });
       $.find('.navbar-nav li a').each(function () {
         var menuItem = angular.element(this);
-        if (menuItem.attr('href').indexOf(pageUrl) !== -1) {
-          return menuItem.click();
+        if (menuItem.attr('href').indexOf(pageUrl) > 0) {
+          menuItem.parent().parent().children('li').removeClass('active');
+          menuItem.parent().addClass('active');
         }
       })
     }
