@@ -7,7 +7,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "npm i && npm run bower && gulp serve",
-    "bower": "./node_modules/bower/bin/bower install --allow-root",
+    "bower": "bower install --allow-root",
     "development": "gulp serve --NODE_ENV=development",
     "test": "echo \"no tests\""
   },
