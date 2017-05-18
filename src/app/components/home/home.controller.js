@@ -6,29 +6,33 @@
 
 
   /** @ngInject */
-  function HomeController ($log, HomeService, $location) {
+  function HomeController ($log, HomeService, $location, _) {
     $log.info('HomeController initialized on date: %s', new Date().toISOString());
     var vm = this;
     vm.searchList = [];
     vm.searchData = {
-      name: $location.search().name || null,
-      year: $location.search().year || null,
-      genre: $location.search().genre || null,
-      page: 1
+      Title: $location.search().title || '',
+      Year: $location.search().year || '',
+      Genre: $location.search().genre || ''
     };
+    vm.page = $location.search().page || 1;
     vm.scrolling = false;
     vm.doSearch = doSearch;
     vm.onScrollPage = onScrollPage;
     vm.onScrolling = onScrolling;
 
     (function construct () {
-      if (vm.searchData.name) {
+      if (vm.searchData.Title) {
         doSearch();
       }
     })();
 
     function setQueryParams () {
-      $location.search(vm.searchData);
+      var query = { page: vm.page }
+      for (var property in vm.searchData) {
+        if (vm.searchData[property]) query[property.toLowerCase()] = vm.searchData[property];
+      }
+      $location.search(query);
     }
 
     function onScrolling (value) {
@@ -36,19 +40,20 @@
     }
 
     function onScrollPage () {
-      vm.searchData.page++;
+      vm.page++;
       vm.scrolling = true;
       return doSearch();
     }
 
     function doSearch () {
       setQueryParams();
-      HomeService.doSearch(vm.searchData, function (err, list) {
+      var data = _.extend(_.clone(vm.searchData), { page: vm.page });
+      HomeService.doSearch(data, function (err, list) {
         if (err) return;
         vm.searchList = vm.searchList.concat(list);
         vm.scrolling = !list.length;
         if (!list.length) {
-          vm.searchData.page--;
+          vm.page--;
           setQueryParams();
         }
       })

@@ -5,14 +5,12 @@
     .service('HomeService', HomeService)
 
 
-
   /** @ngInject */
   function HomeService ($log, WebAPI, async, FALLBACK_POSTER_IMG) {
     $log.info('HomeService initialized on date: %s', new Date().toISOString());
 
-        // if (value.Poster === 'N/A') value.Poster = FALLBACK_POSTER_IMG;
     function parseListResult (data, done) {
-      if (!data.Response || !angular.isArray(data.Search)) return done([]);
+      if (!data.Response || !angular.isArray(data.Search)) return done(null, []);
       var result = [];
       var Tasks = [];
 
@@ -27,7 +25,7 @@
         });
       });
 
-      async.parallel(Tasks, function onFinishTasks(err) {
+      return async.parallel(Tasks, function onFinishTasks(err) {
         if (err) return done(err);
         return done(null, result);
       });

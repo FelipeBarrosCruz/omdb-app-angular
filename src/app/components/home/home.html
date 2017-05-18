@@ -1,7 +1,10 @@
 <section class="container search-page">
-  <search-form data-search-data="home_vm.searchData" data-do-search="home_vm.doSearch"></search-form>
+  <search-form 
+    data-search-data="home_vm.searchData" 
+    data-do-search="home_vm.doSearch"
+    data-list="home_vm.searchList"></search-form>
   <div 
-    class="search-result text-center" 
+    class="search-result" 
     infinite-scroll="home_vm.onScrollPage()"
     infinite-scroll-immediate-check="false"
     infinite-scroll-distance="3"
@@ -9,6 +12,7 @@
     infinite-scroll-use-document-bottom="true">
     <list-view 
       data-list="home_vm.searchList"
+      data-search-data="home_vm.searchData"
       data-on-scrolling="home_vm.onScrolling"></list-view>
   </div>
 </section>
