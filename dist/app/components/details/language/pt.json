@@ -1,0 +1,11 @@
+{
+  "DETAIL_LABEL_PLOT": "Enredo",
+  "DETAIL_LABEL_ACTORS": "Atores",
+  "DETAIL_LABEL_YEAR": "Ano",
+  "DETAIL_LABEL_GENRE": "Gênero",
+  "DETAIL_LABEL_DIRECTOR": "Diretor",
+  "DETAIL_LABEL_RATING": "Avaliação",
+  "DETAIL_LABEL_AWARDS": "Prêmios",
+  "DETAIL_ALERT_ALREADY_ADDED_IN_FAVORITES_BODY": "Já adicionado aos seus favoritos, você deseja",
+  "DETAIL_ALERT_ALREADY_ADDED_IN_FAVORITES_BUTTON": "remover?"
+}
