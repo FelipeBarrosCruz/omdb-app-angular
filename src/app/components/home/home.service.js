@@ -46,9 +46,6 @@
         return Tasks.push(function (next) {
           return selectOfflineData(value.imdbID, function onResponse (err, response) {
             if (!err && result) {
-              console.log("\n\n\n")
-              console.log('CUCUCUCU', err, response)
-              console.log("\n\n\n")
               result.push(parseResultPoster(response))
               return next(null)
             }
