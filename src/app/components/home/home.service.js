@@ -11,13 +11,14 @@
     var TABLE_NAME = 'movies';
 
     function createOfflineData (data, done) {
-      return ngDexie.add(TABLE_NAME, data)
+      var schema = { imdbID: data.imdbID, data: angular.copy(data) };
+      return ngDexie.add(TABLE_NAME, schema)
         .then(function onSave (result) {
-          $log.info('Offline data saved with success', result);
+          $log.info('Offline data create with success', result);
           if (angular.isFunction(done)) return done(null, result);
         }).catch(function onError (err) {
-          $log.error('Offline data error: ', err);
-          if (angular.isFunction(done)) return done(err || new Error('Register cannot be created'), null);
+          $log.error('Offline data create error: ', err);
+          if (angular.isFunction(done)) return done('Register cannot be created', null);
         })
     }
 
@@ -27,8 +28,9 @@
           $log.info('Offline data select with success', result);
           return done(null, result);
         }).catch(function onError (err) {
-          $log.error('Offline data error: ', err);
-          return done(err || new Error('Register doest exists'), null);
+          err = err || 'Register doest exists'
+          $log.error('Offline data select error: ', err);
+          return done(err, null);
         })
     }
 
@@ -46,14 +48,14 @@
         return Tasks.push(function (next) {
           return selectOfflineData(value.imdbID, function onResponse (err, response) {
             if (!err && result) {
-              result.push(parseResultPoster(response))
+              result.push(parseResultPoster(response.data))
               return next(null)
             }
             return searchByImdbId(value.imdbID, function onSearchByIdmbId (err, response) {
               if (err) return next(err);
               if (response.Poster === 'N/A') response.Poster = FALLBACK_POSTER_IMG;
               if (response) result.push(response);
-              createOfflineData(result);
+              createOfflineData(response);
               return next(null);
             });
           })
